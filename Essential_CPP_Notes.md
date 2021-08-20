@@ -251,9 +251,106 @@ while(std::cin >> word) words[word]++;
 std::cout << words.size() << std::endl;
 ```
 
+# Chapter04： 基于对象的编程风格
 
+## Class的基本知识
 
+1. 一般情况下：class由两部分组成，一组public操作函数和运算符，以及一组private实现细节
 
+   -  public member可以在程序的任何地方被访问
+
+   - private member只能在member function或者class friend内被访问
+
+2. 如果一个member function在class主体内定义，会被自动视为inline function
+3. class的定义及其inline function定义在头文件中，而non-inline function定义在程序文件中
+
+## 构造函数与析构函数
+
+- 定义class object的方式
+
+  ```c++
+  Triangular t; 		//调用默认的构造函数
+  Triangular t1(10,3);//调用两个参数的构造函数
+  Triangular t2 = 8;  //调用单一参数的构造函数！！！
+  ```
+
+- 构造函数的定义中，空参与默认参数的构造函数只能出现一种
+
+  ```c++
+  //空参
+  Triangular(){
+      //...
+  }
+  
+  //默认参数：同时支持Triangular t;Triangular t(1);Triangular t(1,2); 三种定义方式
+  Triangular(int len=1,int pos=1){
+      //...
+  }
+  ```
+
+- 参数列表初始化
+
+  ```c++
+  //优先使用参数列表初始化
+  Triangular::Triangular(int len,int pos):_name("Triangluar"){
+      _length = len > 0 ? len : 1; //不能直接用参数列表表达的放在函数体中初始化
+      _pos = _pos > 0 > pos :1;
+  }
+  ```
+
+- 析构函数
+
+  ```c++
+  //destructor并非一定需要
+  ~Triangular(){
+      delete [] _vector_object;
+  }
+  ```
+
+- 拷贝构造函数
+
+  ```c++
+  //存在的原因：如果没有copy constructor
+  Triangular t1(1);
+  Triangular t2 = t1; //此时会自动逐一将t1中元素的值赋值给t2,如果t1中有heap中数据，t2会指向t1中相同的数据
+  
+  //重载一个copy constructor，自定义拷贝操作
+  Triangular::Triangular(Triangular& t1){
+      //...
+  }
+  
+  //上面的情况只能通过Triangular t1(t);的方式定义，因此为了实现t1=t的形式，还需要重载=
+  ```
+
+  
+
+## const与mutable
+
+- 通过标明member function为const的方式，声明member function不会改变class object的内容
+
+  ```c++
+  class Triangular{
+    int length() const {return _length}  //inline方式
+    int elem(int pos) const;
+  };
+  
+  int Triangular::elem(int pos) const{//声明和定义都要声明const
+      return _elems[pos];
+  }
+  ```
+
+- 当member function声明为function后，改变了某些成员变量，但是不影响class object的常量性时，可以将这些改变的成员变量声明为mutable
+
+  ```c++
+  class Triangular{
+      public:
+      	void next_reset() const {_next=_next-1;}
+      private:
+      	mutable int _next;
+  }
+  ```
+
+  
 
 
 

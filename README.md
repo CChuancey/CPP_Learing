@@ -54,9 +54,49 @@
 - vector等容器可以在函数中定义且可以返回其地址。不会销毁！！
 - 了解到泛型编程的机制与iterator的使用
 
+---
 
+8.20
 
+成就：完成Essential C++的第四章
 
+收获与心得：
+
+- 使用`=`符号给class object赋值时，会自动转换为对应的构造函数
+
+- 使用`=`符号实现class object之间的拷贝时，如果不重载`=`,默认情况下两个class object的栈区和堆区的内容都相同
+
+- A类要访问B类的private内容时，需要声明`friend`类
+
+- `<<`和`>>`运算符不是member function
+
+- **函数指针的typedef**：`typedef void (Triangular::*PtrFunc)(int);` 此后`PtrFunc`代表void f(int)类型的函数指针，可以使用`PtrFunc ptr`的方式定义函数指针
+
+- 指向class member function的指针用法
+
+  ```c++
+  class Triangular{
+  public:
+      void func(int x){
+          std::cout << "Your func is " << x << std::endl;
+      }
+  private:
+  
+  };
+  typedef void (Triangular::*FuncPtrType)(int);
+  
+  int main()
+  {
+  
+      FuncPtrType ptr = Triangular::func;
+      Triangular tr;
+      (tr.*ptr)(1);
+      return 0;
+  }
+  
+  ```
+
+  
 
 
 

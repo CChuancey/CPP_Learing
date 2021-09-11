@@ -1,3 +1,3 @@
 project(CPP_Learning)
 
-add_executable(main main.cpp)
+add_executable(main ./src/main.cpp)

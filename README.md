@@ -50,7 +50,7 @@
 
 5. Ctrl+Shift+P调出命令面板，输入cmake，选择configure，选择gcc编译器目录，会自动生成cmake编译环境（build文件夹）
 
-6. 修改launch.json中的program字段：目录中加build
+6. 修改launch.json中的program字段：目录中加build；同时,cwd和program字段的目录修改为workspace
 
    ```json
    {
@@ -63,10 +63,10 @@
                "name": "g++.exe - 生成和调试活动文件",
                "type": "cppdbg",
                "request": "launch",
-               "program": "${fileDirname}\\build\\${fileBasenameNoExtension}.exe", //生成的二进制文件在build文件夹下
+               "program": "${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe", //生成的二进制文件在build文件夹下
                "args": [],
                "stopAtEntry": false,
-               "cwd": "${fileDirname}",
+               "cwd": "${workspaceFolder}",
                "environment": [],
                "externalConsole": false,
                "MIMode": "gdb",

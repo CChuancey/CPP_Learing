@@ -43,7 +43,7 @@ inline BinaryTree<elemType>::~BinaryTree(){
 }
 
 template<typename elemType>
-inline BinaryTree<elemType> BinaryTree<elemType>::operator=(const BinaryTree& rhs){
+inline BinaryTree<elemType>& BinaryTree<elemType>::operator=(const BinaryTree& rhs){
     if(this!=&rhs){
         clear();
         copy(_root,rhs._root);

@@ -138,6 +138,7 @@ launch.json
     "version": "0.2.0",
     "configurations": [
         {
+            //name 根据c++和c选择
             "name": "gcc - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",

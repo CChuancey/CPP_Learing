@@ -6,5 +6,6 @@ aux_source_directory(./src SRC_LIST)
 add_executable(main ./src/main.cpp)
 add_executable(class01 ./src/class01.cpp)
 add_executable(contanier ./src/contanier.cpp)
+add_executable(ptr ./src/ptr.cpp)
 add_definitions(-std=c++11)
 

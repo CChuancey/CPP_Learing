@@ -11,5 +11,6 @@ add_executable(DesignPatterns01_Simple_Factory ./src/DesignPatterns01_Simple_Fac
 add_executable(DesignPatterns01_Factory ./src/DesignPatterns01_Factory.cpp)
 add_executable(DesignPatterns01_AbstractFactory ./src/DesignPatterns01_AbstractFactory.cpp)
 add_executable(DesignPatterns02_SingleInstance ./src/DesignPatterns02_SingleInstance.cpp)
+add_executable(DesignPatterns03_Proxy ./src/DesignPatterns03_Proxy.cpp)
 add_definitions(-std=c++11)
 

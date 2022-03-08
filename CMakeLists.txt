@@ -14,6 +14,7 @@ add_executable(DesignPatterns02_SingleInstance ./src/DesignPatterns02_SingleInst
 add_executable(DesignPatterns03_Proxy ./src/DesignPatterns03_Proxy.cpp)
 add_executable(DesignPatterns04_Decorate ./src/DesignPatterns04_Decorate.cpp)
 add_executable(DesignPatterns05_Appearance ./src/DesignPatterns05_Appearance.cpp)
+add_executable(DesignPatterns06_Adapter ./src/DesignPatterns06_Adapter.cpp)
 
 add_definitions(-std=c++11)
 

@@ -13,6 +13,7 @@ add_executable(DesignPatterns01_AbstractFactory ./src/DesignPatterns01_AbstractF
 add_executable(DesignPatterns02_SingleInstance ./src/DesignPatterns02_SingleInstance.cpp)
 add_executable(DesignPatterns03_Proxy ./src/DesignPatterns03_Proxy.cpp)
 add_executable(DesignPatterns04_Decorate ./src/DesignPatterns04_Decorate.cpp)
+add_executable(DesignPatterns05_Appearance ./src/DesignPatterns05_Appearance.cpp)
 
 add_definitions(-std=c++11)
 

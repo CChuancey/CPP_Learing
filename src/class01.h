@@ -11,7 +11,7 @@ class Sales_data {
     friend std::istream& read(std::istream&, Sales_data&);
     friend std::ostream& print(std::ostream&, const Sales_data&);
 
-   public:
+public:
     Sales_data() = default;
     Sales_data(const std::string& s, unsigned n, double p)
         : bookno(s), units_sold(n), revenue(p * n) {}
@@ -20,7 +20,7 @@ class Sales_data {
     std::string isbn() const { return bookno; }
     Sales_data& combine(const Sales_data&);
 
-   private:
+private:
     std::string bookno;
     unsigned units_sold = 0;
     double revenue = 0.0;
@@ -33,13 +33,13 @@ std::ostream& print(std::ostream&, const Sales_data&);
 
 // Account类
 class Account {
-   public:
+public:
     Account() = default;
     void calculate() { amount += amount * interstRate; }
     static double rate() { return interstRate; }
     static void rate(double);
 
-   private:
+private:
     std::string owner;
     double amount = 0;
     // 静态成员不在类内进行初始化
@@ -48,7 +48,7 @@ class Account {
 };
 
 class EX {
-   public:
+public:
     static constexpr double rate = 1.0;
     static const int vecsize = 10;
     static std::vector<double> vec;

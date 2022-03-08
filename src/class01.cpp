@@ -32,13 +32,9 @@ std::ostream& print(std::ostream& os, const Sales_data& item) {
 }
 
 /*******************/
-void Account::rate(double rate) {
-    interstRate = rate;
-}
+void Account::rate(double rate) { interstRate = rate; }
 
-double Account::initRate() {
-    return interstRate = 0;
-}
+double Account::initRate() { return interstRate = 0; }
 
 double Account::interstRate = initRate();
 

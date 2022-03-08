@@ -3,13 +3,13 @@
 // 懒汉模式，多线程需要加锁,有内存泄漏
 // 可定义局部静态变量，返回类对象的引用
 class SingleInstance {
-   public:
+public:
     // 多线程加锁
     static SingleInstance* getInstance() {
         return instance ? instance : (instance = new SingleInstance);
     }
 
-   private:
+private:
     SingleInstance() = default;
     // 静态
     static SingleInstance* instance;

@@ -9,32 +9,32 @@ using std::string;
 using std::vector;
 
 class Item {
-   public:
+public:
     Item() = default;
     Item(string n, string k, string t) : name(n), kind(k), type(t) {}
     string getName() { return name; }
     string getType() { return type; }
 
-   private:
+private:
     string name;
     string kind;
     string type;
 };
 
 class Shopping {
-   public:
+public:
     virtual void buy(Item*) = 0;
 };
 
 class USAbuy : public Shopping {
-   public:
+public:
     virtual void buy(Item* item) {
         cout << "去美国买" << item->getName() << endl;
     }
 };
 
 class OverseaBuy {
-   public:
+public:
     OverseaBuy() = default;
     OverseaBuy(Shopping* s) : shopping(s) {}
     void buy(Item* item) {
@@ -44,7 +44,7 @@ class OverseaBuy {
         }
     }
 
-   private:
+private:
     Shopping* shopping;
 };
 

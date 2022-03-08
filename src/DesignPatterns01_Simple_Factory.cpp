@@ -22,24 +22,24 @@ class Fruit {
 
 // 使用简单工厂模式，设计一个水果工厂类，并将各种水果作为子类分离出来
 class Fruit {
-   public:
+public:
     Fruit() = default;
     virtual void printName() const = 0;
 };
 
 class Apple : public Fruit {
-   public:
+public:
     virtual void printName() const { std::cout << "我是苹果" << std::endl; }
 };
 
 class Banana : public Fruit {
-   public:
+public:
     virtual void printName() const { std::cout << "我是香蕉" << std::endl; }
 };
 
 // 但是它破坏了“开闭原则”，当新增水果种类时，需要修改FruitFactory的代码
 class FruitFactory {
-   public:
+public:
     FruitFactory() = default;
     Fruit* createFruit(std::string name) {
         Fruit* ret = nullptr;

@@ -6,9 +6,7 @@
 
 // 定义shared_ptr时，第二个参数可以指定自定义释放函数
 
-void process(std::shared_ptr<int> p) {
-    return;
-}
+void process(std::shared_ptr<int> p) { return; }
 
 int main() {
     std::shared_ptr<int> ptr = std::make_shared<int>(10);

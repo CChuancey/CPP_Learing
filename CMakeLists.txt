@@ -17,6 +17,7 @@ add_executable(DesignPatterns05_Appearance ./src/DesignPatterns05_Appearance.cpp
 add_executable(DesignPatterns06_Adapter ./src/DesignPatterns06_Adapter.cpp)
 add_executable(DesignPatterns07_Command ./src/DesignPatterns07_Command.cpp)
 add_executable(DesignPatterns08_Strategy ./src/DesignPatterns08_Strategy.cpp)
+add_executable(DesignPatterns09_Observer ./src/DesignPatterns09_Observer.cpp)
 
 add_definitions(-std=c++11)
 

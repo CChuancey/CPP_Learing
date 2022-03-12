@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.16)
 
 project(CPP_Learning)
 aux_source_directory(./src SRC_LIST)
@@ -18,6 +18,7 @@ add_executable(DesignPatterns06_Adapter ./src/DesignPatterns06_Adapter.cpp)
 add_executable(DesignPatterns07_Command ./src/DesignPatterns07_Command.cpp)
 add_executable(DesignPatterns08_Strategy ./src/DesignPatterns08_Strategy.cpp)
 add_executable(DesignPatterns09_Observer ./src/DesignPatterns09_Observer.cpp)
+add_executable(cppKeywords ./src/cppKeywords.cpp)
 
 add_definitions(-std=c++11)
 

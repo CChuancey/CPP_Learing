@@ -21,6 +21,7 @@ add_executable(DesignPatterns09_Observer ./src/DesignPatterns09_Observer.cpp)
 add_executable(cppKeywords ./src/cppKeywords.cpp)
 add_executable(sharedptr ./src/sharedptr.cpp)
 add_executable(lambda ./src/lambda.cpp)
+add_executable(stl ./src/stl.cpp)
 
 add_definitions(-std=c++11)
 

@@ -22,6 +22,7 @@ add_executable(cppKeywords ./src/cppKeywords.cpp)
 add_executable(sharedptr ./src/sharedptr.cpp)
 add_executable(lambda ./src/lambda.cpp)
 add_executable(stl ./src/stl.cpp)
+add_executable(thread ./src/thread.cpp)
 
 add_definitions(-std=c++11)
 

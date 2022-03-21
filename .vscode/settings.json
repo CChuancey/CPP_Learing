@@ -39,6 +39,15 @@
         "algorithm": "cpp",
         "memory": "cpp",
         "memory_resource": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "thread": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "ctime": "cpp",
+        "forward_list": "cpp",
+        "map": "cpp",
+        "ratio": "cpp",
+        "set": "cpp",
+        "mutex": "cpp"
     }
 }

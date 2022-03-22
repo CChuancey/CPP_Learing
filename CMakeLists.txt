@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(CPP_Learning)
 aux_source_directory(./src SRC_LIST)
+include_directories(C:\\Mingw\\include\\boost_1_78_0\\boost_1_78_0)
 
 add_executable(main ./src/main.cpp)
 add_executable(class01 ./src/class01.cpp)
@@ -23,6 +24,7 @@ add_executable(sharedptr ./src/sharedptr.cpp)
 add_executable(lambda ./src/lambda.cpp)
 add_executable(stl ./src/stl.cpp)
 add_executable(thread ./src/thread.cpp)
+add_executable(net ./src/net.cpp)
 
 add_definitions(-std=c++11)
 

@@ -4,6 +4,8 @@ project(CPP_Learning)
 aux_source_directory(./src SRC_LIST)
 include_directories(C:\\Mingw\\include\\boost_1_78_0\\boost_1_78_0)
 
+
+
 add_executable(main ./src/main.cpp)
 add_executable(class01 ./src/class01.cpp)
 add_executable(contanier ./src/contanier.cpp)
@@ -24,7 +26,9 @@ add_executable(sharedptr ./src/sharedptr.cpp)
 add_executable(lambda ./src/lambda.cpp)
 add_executable(stl ./src/stl.cpp)
 add_executable(thread ./src/thread.cpp)
+target_link_libraries(thread pthread)
 add_executable(net ./src/net.cpp)
+target_link_libraries(net pthread)
 
 add_definitions(-std=c++11)
 

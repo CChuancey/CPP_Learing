@@ -1,4 +1,4 @@
-{   
+{
     "version": "2.0.0",
     "options": {
         "cwd": "${workspaceFolder}/build"
@@ -18,18 +18,15 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "command": "mingw32-make",
-            "args": [
-
-            ],
+            "command": "make",
+            "args": [],
         },
         {
             "label": "C/C++: g++.exe 生成活动文件",
-            "dependsOn":[
+            "dependsOn": [
                 "cmake",
                 "make"
             ]
         }
     ],
-
 }

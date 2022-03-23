@@ -65,6 +65,19 @@ int main() {
 
     //给线程计时
     start = clock();
+    /**
+     * @brief thread构造函数的参数
+     *
+     * 第一个参数并不是C语言中的函数指针，而是C++11中的可调用对象
+     * 可调用对象：
+     * - 函数指针
+     * - 重载了operator()的类对象
+     * - lambda表达式
+     * - bind绑定的函数
+     * - std::function
+     *
+     *  线程对象只可以std::movemove不能复制
+     */
     std::thread t(print);
     //线程的终结
     t.join();

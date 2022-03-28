@@ -24,7 +24,8 @@ add_executable(sharedptr ./src/sharedptr.cpp)
 add_executable(lambda ./src/lambda.cpp)
 add_executable(stl ./src/stl.cpp)
 add_executable(thread ./src/thread.cpp)
-add_executable(net ./src/net.cpp)
+# add_executable(net ./src/net.cpp)
+add_executable(memoryManagement ./src/memoryManagement.cpp)
 
 add_definitions(-std=c++11)
 

@@ -26,6 +26,7 @@ add_executable(stl ./src/stl.cpp)
 add_executable(thread ./src/thread.cpp)
 # add_executable(net ./src/net.cpp)
 add_executable(memoryManagement ./src/memoryManagement.cpp)
+add_executable(memoryManagementAlloc ./src/memoryManagementAlloc.cpp)
 
 add_definitions(-std=c++11)
 

@@ -158,6 +158,167 @@ private:
 Res res(std::shared_ptr<MyClass>(new MyClass()));
 ```
 
+---
+
+# Part4 设计与声明
+
+## 18 设计的接口要容易被使用，不易被误用
+
+- 保持接口的一致性以及与内置类型行为兼容
+- 建立新类型、限制类型上的操作、束缚对象值等方法可以尽可能阻止误用
+
+ ## 19 设计class犹如设计type一样艰难
+
+- 对象的创建和销毁
+- 对象的初始化和对象的复制
+- copy函数用来定义一个type的pass-by-value如何实现
+- 什么是新type的合法值
+- 需要继承体系吗
+- 新type需要什么样的类型转换
+- 需要对其设计什么样的operator
+- 需要template化吗
+
+## 20 用pass-by-reference-to-const替换pass-by-value
+
+- 对于内置类型，一律采用pass-by-value的方式
+
+- 对于自定义类型/STL等，最好采用pass-by-reference-to-const
+
+  > reference内部采用指针实现，涉及到多态下的参数传递时，还可以避免引pass-by-value导致的对象切割问题，只能传递基类部分
+
+## 21 函数返回对象时，不要返回reference
+
+- 不要用pointer或reference指向一个local stack对象
+
+  ```c++
+  //（C++11可 std::move配合右值引用） 以下代码有待验证，调用了4次析构
+  class MyClass
+  {
+  public:
+      MyClass(int v):m_value(v) {}
+      void print()
+      {
+          std::cout << m_value << " x: "<< x << std::endl;
+      }
+      int operator()() const
+      {
+          return m_value;
+      }
+      ~MyClass(){
+          std::cout <<m_value<< " ~ fun" << std::endl;
+      }
+  
+  private:
+      static enum
+      {
+          x=10
+      } m;
+  //    static const int x=110;
+      const int m_value;
+  };
+  
+  // 二元opertor*定义在class外部
+  const MyClass&& operator*(const MyClass& lhs,const MyClass& rhs){
+      return std::move(MyClass(lhs()*rhs()));
+  }
+  
+  int main(){
+      MyClass a(3),b(2);
+      MyClass c = a*b;
+      c.print();
+      return 0;
+  }
+  ```
+
+- 不要用reference指向一个返回的heap-allocated对象,如a=b*c，b,c是函数返回的heap-allocated对象，不去释放就容易内存泄漏
+
+- 不要用reference/pointer指向一个local static对象，而有可能同时需要多个这样的对象，造成多线程不安全
+
+## 22 将成员变量声明为private
+
+- 成员变量应该隐藏起来，每个成员变量都需要一个getter和setter的情况罕见
+- 将成员变量声明为private提供了封装，使得对其他对象操作成员变量时提供了约束
+- protected和public都不具有封装性
+  - 对于public：如果成员变量发生了改变，与之相关的类都要修改
+  - 对于protected：如果成员变量发生了改变，derived类都要做出改变
+
+## 23 尽可能使用non-member-non-friend函数替换member函数
+
+- 能够访问private成员变量的函数只有member函数和friend函数，故而non-member且non-friend函数能够提供较大的封装性
+- 将non-member-non-friend函数和class放入一个namespace，namespace可以跨文件
+
+## 24 如果所有参数都需要类型转换，采用non-member函数
+
+```c++
+class Rational{
+public:
+    Rational(int numerator=0,int denominator=1):num(numerator),demo(denominator){}
+    int getNum() const {return num;}
+    int getDemo() const {return demo;}
+    void print() const {
+        std::cout << num << "/" << demo << std::endl;
+    }
+private:
+    int num;
+    int demo;
+};
+
+// 定义为non-member函数
+const Rational operator*(const Rational& lhs,const Rational& rhs){
+    return Rational(lhs.getNum()*rhs.getNum(),lhs.getDemo()*rhs.getDemo());
+}
+
+Rational ra(1,2),rb(3,4);
+Rational d = ra*2; // Rational类的构造函数为声明为explicit，2隐式转换为Rational类
+d.print();
+Rational e = 3*d; //如果定义为member函数，此句就会出错 
+```
+
+## 25 写出一个不抛出异常的swap函数
+
+- 当std::swap提供的swap函数效率不高时，提供一个swap成员函数，并确定它不会抛出异常
+- 如果提供了一个member swap，也应该提供一个non-member swap来调用它；并且再提供特化版本的std::swap
+- 可以为用户定义类型进行std templates全特化，但是不能再标准空间内添加新的templates
+
+```c++
+namespace myspace{
+class Widgets{
+public:
+    void swap(Widgets& other)
+    {
+        using std::swap;
+        swap(v,other.v);
+    }
+
+
+private:
+    int v;//v是swap过程中类中唯一需要swap的
+
+};
+
+void swap(Widgets& a,Widgets& b){
+    a.swap(b);
+}
+
+}
+
+namespace std{
+    using myspace::Widgets;
+    template<>
+    void swap<Widgets>(Widgets& a,Widgets& b)    {
+        a.swap(b);
+    }
+}
+```
+
+
+
+
+
+
+
+
+
 
 
 
